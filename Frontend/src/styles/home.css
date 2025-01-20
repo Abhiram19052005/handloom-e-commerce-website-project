@@ -1,0 +1,37 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background: linear-gradient(to bottom, #fdf8e4, #e9dcc7);
+  }
+.home-container {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to bottom, #fdf8e4, #e9dcc7);
+  }
+  
+  .slideshow-container {
+    width: 100%;
+    max-width:100%;
+    margin: 0 auto;
+  }
+  
+  .slideshow-image {
+    width: 100%;
+    height: auto;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .explore-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .explore-btn:hover {
+    background-color: #45a049;
+  }
+  

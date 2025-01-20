@@ -1,0 +1,84 @@
+/* loginform.css */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  background: linear-gradient(to bottom, #f7ede2, #d9d4cb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  background: #ffffff;
+  padding: 20px 40px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 320px;
+  border: 4px solid #010101; /* Decorative border */
+}
+
+.login-header h1 {
+  font-family: 'Georgia', serif;
+  font-size: 28px;
+  color: #5a3d2a;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 3px #d4a373; /* Subtle shadow */
+}
+
+.login-header p {
+  font-size: 14px;
+  color: #7a6b64;
+  font-style: italic; /* Artistic touch */
+}
+
+.login-form {
+  margin-top: 20px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #d4a373;
+  border-radius: 6px;
+  background: #fdfaf6; /* Subtle texture background */
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #5a3d2a;
+  color: white;
+}
+
+.login-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 300px;
+  height: 300px;
+  background: url('https://example.com/handloom-pattern.png') no-repeat center center; /* Handloom pattern */
+  opacity: 0.1; /* Subtle */
+  z-index: -1;
+}

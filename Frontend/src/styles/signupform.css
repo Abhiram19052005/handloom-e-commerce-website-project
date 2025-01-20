@@ -1,0 +1,157 @@
+/* Main container styling */
+.signup-form-container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 480px; /* Max width for better scaling */
+    margin: 50px auto; /* Centered with space from top */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0e0e0; /* Light border for structure */
+}
+
+.signup-form-container:hover {
+    transform: translateY(-5px); /* Gentle lift effect on hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+/* Header styling */
+h2 {
+    font-family: 'Georgia', serif;
+    font-size: 28px; /* Balanced font size */
+    color: #5a3d2a;
+    margin-bottom: 20px;
+}
+
+/* Notification styling */
+.error-message,
+.success-message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.error-message {
+    background-color: #ffe5e5; /* Softer red background */
+    color: #d32f2f; /* Darker red text */
+    border: 1px solid #f5c6cb;
+}
+
+.success-message {
+    background-color: #eaffea; /* Softer green background */
+    color: #388e3c; /* Darker green text */
+    border: 1px solid #c3e6cb;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left; /* Align labels and inputs */
+}
+
+label {
+    display: block;
+    font-size: 15px; /* Slightly smaller text for labels */
+    color: #333;
+    font-weight: 600; /* Bold for emphasis */
+    margin-bottom: 5px; /* Spacing below label */
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fafafa; /* Light gray background */
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #b48c61; /* Highlight color on focus */
+    background-color: #fffef5; /* Subtle background highlight */
+    outline: none;
+}
+
+/* Placeholder styling */
+input::placeholder,
+textarea::placeholder {
+    color: #a6a6a6;
+    font-style: italic;
+}
+
+/* Textarea specific styling */
+textarea {
+    height: 120px; /* Default height */
+    resize: vertical; /* Allow resizing only vertically */
+}
+
+/* Password strength indicator */
+.password-strength {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.password-strength.weak {
+    color: #d32f2f; /* Weak - Red */
+}
+
+.password-strength.medium {
+    color: #ffa000; /* Medium - Orange */
+}
+
+.password-strength.strong {
+    color: #388e3c; /* Strong - Green */
+}
+
+/* Button styling */
+button.submit-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #5a3d2a; /* Primary color */
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.submit-btn:hover {
+    background-color: #6b4a35; /* Darker shade on hover */
+    transform: scale(1.02);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .signup-form-container {
+        padding: 20px;
+        width: 90%; /* Adapt to screen width */
+    }
+
+    h2 {
+        font-size: 24px; /* Adjusted font size */
+    }
+
+    label {
+        font-size: 14px; /* Smaller labels on small screens */
+    }
+
+    input,
+    textarea,
+    select {
+        font-size: 14px; /* Adjust input font size */
+        padding: 10px;
+    }
+
+    button.submit-btn {
+        font-size: 16px; /* Button text size for small screens */
+    }
+}
