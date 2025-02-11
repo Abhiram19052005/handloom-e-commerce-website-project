@@ -19,7 +19,7 @@ public class UserController {
 
     // User Registration
     @PostMapping("/signup")
-    public ResponseEntity<User> signup(@RequestBody User user) {
+    public ResponseEntity<?> signup(@RequestBody User user) {
         if (user.getRole() == null || user.getRole().isEmpty()) {
             user.setRole("USER");
         }
@@ -27,11 +27,17 @@ public class UserController {
         return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
     }
 
-    // User Login
+    // User Login (Includes Artisan Check)
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User loginRequest) {
         try {
             User user = userService.authenticateUser(loginRequest.getEmail(), loginRequest.getPassword());
+
+            if ("ARTISAN".equalsIgnoreCase(user.getRole()) && !user.getIsApproved()) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                        .body("Your account is pending approval. Please wait for admin approval.");
+            }
+
             return ResponseEntity.ok(user);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());

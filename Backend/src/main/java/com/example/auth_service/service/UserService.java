@@ -18,6 +18,12 @@ public class UserService {
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
             throw new RuntimeException("User already exists with email: " + user.getEmail());
         }
+
+        // If the user is an artisan, set isApproved to false by default
+        if ("ARTISAN".equalsIgnoreCase(user.getRole())) {
+            user.setIsApproved(false);
+        }
+
         return userRepository.save(user);
     }
 
@@ -31,29 +37,22 @@ public class UserService {
         }
 
         if ("ARTISAN".equalsIgnoreCase(user.getRole()) && !user.getIsApproved()) {
-            throw new RuntimeException("Artisan account is not approved by the admin.");
+            throw new RuntimeException("Your artisan account is not approved yet.");
         }
 
         return user;
     }
 
-
+    // Update user profile
     public User updateUserProfile(User updatedUser) {
         User existingUser = userRepository.findByEmail(updatedUser.getEmail())
                 .orElseThrow(() -> new RuntimeException("User not found with email: " + updatedUser.getEmail()));
 
-        System.out.println("Existing User: " + existingUser); // Debugging
-        System.out.println("Updated User Data: " + updatedUser); // Debugging
-
-        // Update fields
         existingUser.setName(updatedUser.getName());
         existingUser.setPhone(updatedUser.getPhone());
         existingUser.setAddress(updatedUser.getAddress());
 
-        User savedUser = userRepository.save(existingUser);
-        System.out.println("Saved User: " + savedUser); // Debugging
-
-        return savedUser;
+        return userRepository.save(existingUser);
     }
 
     // Update artisan profile
@@ -61,26 +60,20 @@ public class UserService {
         User existingArtisan = userRepository.findByEmail(updatedArtisan.getEmail())
                 .orElseThrow(() -> new RuntimeException("Artisan not found with email: " + updatedArtisan.getEmail()));
 
-        System.out.println("Existing Artisan: " + existingArtisan); // Debugging
-        System.out.println("Updated Artisan Data: " + updatedArtisan); // Debugging
-
-        // Update fields
         existingArtisan.setName(updatedArtisan.getName());
         existingArtisan.setPhone(updatedArtisan.getPhone());
         existingArtisan.setAddress(updatedArtisan.getAddress());
         existingArtisan.setWorkType(updatedArtisan.getWorkType());
         existingArtisan.setDescription(updatedArtisan.getDescription());
 
-        User savedArtisan = userRepository.save(existingArtisan);
-        System.out.println("Saved Artisan: " + savedArtisan); // Debugging
-
-        return savedArtisan;
+        return userRepository.save(existingArtisan);
     }
 
     // Approve artisan by ID (Admin functionality)
     public User approveArtisan(Long id) {
         User artisan = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Artisan not found with ID: " + id));
+
         artisan.setIsApproved(true);
         return userRepository.save(artisan);
     }
